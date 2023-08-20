@@ -7,7 +7,6 @@ function CountryCard({ showDetails, showContainer }) {
         class="country"
         onClick={() => {
           showDetails();
-          showContainer();
         }}
       >
         <img src="https://flagcdn.com/w320/al.png" alt="flag" />
