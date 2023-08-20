@@ -1,9 +1,15 @@
 import React from "react";
 
-function CountryCard() {
+function CountryCard({ showDetails, showContainer }) {
   return (
     <>
-      <div class="country">
+      <div
+        class="country"
+        onClick={() => {
+          showDetails();
+          showContainer();
+        }}
+      >
         <img src="https://flagcdn.com/w320/al.png" alt="flag" />
 
         <div class="details">

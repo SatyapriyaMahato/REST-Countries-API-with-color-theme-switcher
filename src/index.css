@@ -76,13 +76,16 @@ h1 {
 }
 
 /*=========== search section =========== */
+
 .search-bar {
+  padding: 6rem 8rem;
+}
+
+.search-bar__wrapper {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 6rem;
-  padding: 6rem 8rem;
-
 }
 
 .search-bar .left {
@@ -108,9 +111,30 @@ h1 {
 
 }
 
+.back-btn span {
+  display: block;
+}
+
+.back-btn {
+  width: 9.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px -4px rgba(0, 0, 0, 1);
+  background-color: var(--element);
+  color: var(--text);
+}
+
+.back-btn:hover {
+  cursor: pointer;
+}
+
 /*=========== right search section =========== */
 
-.right {
+.search-bar__wrapper .right {
   width: 20em;
   height: 5rem;
 }
@@ -161,11 +185,11 @@ h1 {
   right: 1rem;
 }
 
-.dropdown.active::before {
+.dropdown.clicked::before {
   right: 1rem;
 }
 
-.dropdown.active::after {
+.dropdown.clicked::after {
   right: 1.6rem;
 }
 
@@ -181,7 +205,7 @@ h1 {
 
 }
 
-.dropdown.active .options {
+.dropdown.clicked .options {
   opacity: 1;
   visibility: visible;
 }
@@ -208,7 +232,11 @@ h1 {
   background-color: var(--element);
 }
 
-.details {
+.country :hover {
+  cursor: pointer;
+}
+
+.country .details {
   margin: 2.5rem;
   margin-top: 3rem;
   margin-bottom: 3rem;
@@ -230,4 +258,63 @@ h1 {
 .details p {
   font-size: 1.4rem;
   padding: .5rem 0;
+}
+
+
+.country-details {
+  display: flex;
+  color: var(--text);
+  gap: 12rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.country-details p {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.country-details span {
+  font-weight: 300;
+}
+
+.country-details .right {
+  padding: 4rem 0;
+
+}
+
+.country-details .right h2 {
+  font-size: 3rem;
+}
+
+.country-details .right .details {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8rem;
+}
+
+.border-countries {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.border-countries p {
+  font-weight: 600;
+}
+
+.border-countries button {
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px -4px rgba(0, 0, 0, 1);
+  background-color: var(--element);
+  color: var(--text);
+}
+
+.active {
+  display: none;
 }
