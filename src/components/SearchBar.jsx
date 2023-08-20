@@ -1,12 +1,14 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-function SearchBar({ dropDown }) {
+function SearchBar({ dropDown, show }) {
   return (
     <>
       <div class="search-bar container">
         <div class="left">
           <div>
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
           </div>
           <input
             class="search-field"
@@ -21,21 +23,53 @@ function SearchBar({ dropDown }) {
               dropDown();
             }}
           >
-            <span>Filter by Region</span>
+            <span
+              class="toggle-menu"
+              onClick={() => {
+                show("Filter by Region");
+              }}
+            >
+              Filter by Region
+            </span>
             <div class="options">
-              <div class="option" onMo onmouseover="show('Africa')">
+              <div
+                class="option"
+                onClick={() => {
+                  show("Africa");
+                }}
+              >
                 Africa
               </div>
-              <div class="option" onmouseover="show('America')">
+              <div
+                class="option"
+                onClick={() => {
+                  show("America");
+                }}
+              >
                 America
               </div>
-              <div class="option" onmouseover="show('Asia')">
+              <div
+                class="option"
+                onClick={() => {
+                  show("Asia");
+                }}
+              >
                 Asia
               </div>
-              <div class="option" onmouseover="show('Europe')">
+              <div
+                class="option"
+                onClick={() => {
+                  show("Asia");
+                }}
+              >
                 Europe
               </div>
-              <div class="option" onmouseover="show('Ocenia')">
+              <div
+                class="option"
+                onClick={() => {
+                  show("Oceania");
+                }}
+              >
                 Ocenia
               </div>
             </div>

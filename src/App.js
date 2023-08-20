@@ -1,37 +1,32 @@
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import CountryCard from './components/CountryCard';
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faMoon } from "@fortawesome/free-solid-svg-icons";
+
 function App() {
   let themeState = true;
 
   const darkMode = () => {
     let darkModeBtn = document.querySelector('.mode');
-    let darkModeIcon = document.getElementById('moonIcon-dark')
-    let lightModeIcon = document.getElementById('moonIcon-light')
+
     if (themeState) {
       document.body.className = "";
       document.body.classList.add(`theme-2`);
       darkModeBtn.innerHTML = ' Light Mode';
-      darkModeIcon.style.display = "inline";
-      lightModeIcon.style.display = "none";
       themeState = false;
     } else {
       document.body.className = "";
       document.body.classList.add(`theme-1`);
-      themeState = true;
       darkModeBtn.innerHTML = ' Dark Mode';
-      lightModeIcon.style.display = "inline";
-      darkModeIcon.style.display = "none";
+      themeState = true;
 
     }
   }
 
 
-  // function show(text) {
-  //   document.querySelector('.toggle-menu').value = text;
-  // }
+  const show = (a) => {
+    document.querySelector('.toggle-menu').innerHTML = a;
+    console.log(a);
+  }
 
 
   const dropDown = () => {
@@ -43,7 +38,7 @@ function App() {
   return (
     <>
       <Header darkMode={darkMode} />
-      <SearchBar dropDown={dropDown} />
+      <SearchBar dropDown={dropDown} show={show} />
       <div class="countries container">
         <CountryCard />
       </div>

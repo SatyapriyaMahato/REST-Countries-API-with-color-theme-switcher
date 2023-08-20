@@ -15,11 +15,8 @@ function Header({ darkMode }) {
                 darkMode();
               }}
             >
-              <span id="moonIcon-light" display="none">
+              <span>
                 <FontAwesomeIcon icon={faMoon} />
-              </span>
-              <span id="moonIcon-dark">
-                <FontAwesomeIcon icon={faMoon} style={{ color: "#ffffff" }} />
               </span>
               <span class="mode"> Dark Mode</span>
             </span>
