@@ -1,7 +1,7 @@
 import React from "react";
 import countriesData from "../data.json";
 
-function CountryDetails({ selectedCountry }) {
+function CountryDetails({ selectedCountry, showBorderCountryDetails }) {
   return (
     <>
       <div className="country-details active container">
@@ -74,10 +74,17 @@ function CountryDetails({ selectedCountry }) {
                 const country = countriesData.find(
                   (country) => country.alpha3Code === borderCode
                 );
+
                 const countryName = country ? country.name : "Unknown Country";
 
                 return (
-                  <button key={index} className="border-countries__btn">
+                  <button
+                    onClick={() => {
+                      showBorderCountryDetails(countryName);
+                    }}
+                    key={index}
+                    className="border-countries__btn"
+                  >
                     {countryName}
                   </button>
                 );

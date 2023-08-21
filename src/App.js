@@ -4,14 +4,12 @@ import SearchBar from './components/SearchBar';
 import CountryCardsContainer from './components/CountryCardsContainer';
 import CountryDetails from './components/CountryDetails';
 import CountryData from "./data.json";
-import { counter } from '@fortawesome/fontawesome-svg-core';
 
 
 function App() {
   const [selectedCountry, setSelectedCountry] = useState(CountryData[0]);
-  // State to store the selected country object
-  let themeState = true;
 
+  let themeState = true;
   const darkMode = () => {
     let darkModeBtn = document.querySelector('.mode');
 
@@ -42,12 +40,20 @@ function App() {
 
   const showDetails = (key) => {
     flagCardClick();
-
     setSelectedCountry(previousState => {
       return { ...previousState, ...key }
     });
 
   };
+
+  const showBorderCountryDetails = (borderCountry) => {
+    const country = CountryData.find(
+      (country) => country.name === borderCountry
+    );
+    const countryObj = country ? country.name : "Unknown Country";
+    showDetails(country);
+    showCountryDetails();
+  }
 
   const flagCardClick = () => {
     const searchBarWrapper = document.querySelector(".search-bar__wrapper");
@@ -60,12 +66,23 @@ function App() {
     countries.classList.toggle("active");
   };
 
+  const showCountryDetails = () => {
+    const countries = document.querySelector(".countries");
+    countries.classList.add("active");
+    const countryDetails = document.querySelector(".country-details");
+    countryDetails.classList.remove("active");
+    const backBtn = document.querySelector(".back-btn");
+    backBtn.classList.remove("active");
+    const searchBarWrapper = document.querySelector(".search-bar__wrapper");
+    searchBarWrapper.classList.add("active");
+  }
+
   return (
     <>
       <Header darkMode={darkMode} />
       <SearchBar dropDown={dropDown} show={show} showDetails={showDetails} />
       <CountryCardsContainer showDetails={showDetails} />
-      <CountryDetails selectedCountry={selectedCountry} />
+      <CountryDetails selectedCountry={selectedCountry} showBorderCountryDetails={showBorderCountryDetails} />
       {/* Pass the selected country to CountryDetails */}
     </>
 
