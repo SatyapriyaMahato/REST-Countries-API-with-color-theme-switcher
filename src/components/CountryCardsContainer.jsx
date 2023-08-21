@@ -2,11 +2,12 @@ import React from "react";
 import CountryCard from "./CountryCard";
 import CountryData from "../data.json";
 
-function CountryCardsContainer({ showDetails }) {
+function CountryCardsContainer({ deafultContries, showDetails }) {
   return (
     <>
-      <div className={`countries container`}>
-        {CountryData.map((country) => {
+      {console.log(deafultContries)}
+      <div className="countries container">
+        {deafultContries.map((country) => {
           return (
             <CountryCard
               showDetails={showDetails}

@@ -8,6 +8,9 @@ import CountryData from "./data.json";
 
 function App() {
   const [selectedCountry, setSelectedCountry] = useState(CountryData[0]);
+  const [selectedCategory, setSelectedCategory] = useState('Filter by Region');
+  const [filteredItems, setFilteredItems] = useState(CountryData); // Declare the state and state updater
+  const categories = [...new Set(CountryData.map(item => item.region))];
 
   let themeState = true;
   const darkMode = () => {
@@ -29,6 +32,11 @@ function App() {
 
   const show = (a) => {
     document.querySelector('.toggle-menu').innerHTML = a;
+    setSelectedCategory(a); // Update the selected category
+    const updatedFilteredItems = a === "Filter by Region"
+      ? CountryData
+      : CountryData.filter(item => item.region === a);
+    setFilteredItems(updatedFilteredItems);
   }
 
   const dropDown = () => {
@@ -36,7 +44,6 @@ function App() {
     dd.classList.toggle('clicked');
   };
 
-  let updatedValue = {};
 
   const showDetails = (key) => {
     flagCardClick();
@@ -55,35 +62,42 @@ function App() {
     showCountryDetails();
   }
 
+  const toggleClass = (element, className) => {
+    const el = document.querySelector(element);
+    el.classList.toggle(className);
+  };
+
+  const activateElement = (element) => {
+    const el = document.querySelector(element);
+    el.classList.add("active");
+  };
+
+  const deactivateElement = (element) => {
+    const el = document.querySelector(element);
+    el.classList.remove("active");
+  };
+
   const flagCardClick = () => {
-    const searchBarWrapper = document.querySelector(".search-bar__wrapper");
-    const backBtn = document.querySelector(".back-btn");
-    const countryDetails = document.querySelector(".country-details");
-    const countries = document.querySelector(".countries");
-    searchBarWrapper.classList.toggle("active");
-    backBtn.classList.toggle("active");
-    countryDetails.classList.toggle("active");
-    countries.classList.toggle("active");
+    toggleClass(".search-bar__wrapper", "active");
+    toggleClass(".back-btn", "active");
+    toggleClass(".country-details", "active");
+    toggleClass(".countries", "active");
   };
 
   const showCountryDetails = () => {
-    const countries = document.querySelector(".countries");
-    countries.classList.add("active");
-    const countryDetails = document.querySelector(".country-details");
-    countryDetails.classList.remove("active");
-    const backBtn = document.querySelector(".back-btn");
-    backBtn.classList.remove("active");
-    const searchBarWrapper = document.querySelector(".search-bar__wrapper");
-    searchBarWrapper.classList.add("active");
-  }
+    activateElement(".countries");
+    deactivateElement(".country-details");
+    deactivateElement(".back-btn");
+    activateElement(".search-bar__wrapper");
+  };
+
 
   return (
     <>
       <Header darkMode={darkMode} />
       <SearchBar dropDown={dropDown} show={show} showDetails={showDetails} />
-      <CountryCardsContainer showDetails={showDetails} />
+      <CountryCardsContainer deafultContries={filteredItems} showDetails={showDetails} />
       <CountryDetails selectedCountry={selectedCountry} showBorderCountryDetails={showBorderCountryDetails} />
-      {/* Pass the selected country to CountryDetails */}
     </>
 
   );

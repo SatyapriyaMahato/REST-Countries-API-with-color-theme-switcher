@@ -58,10 +58,10 @@ function SearchBar({ dropDown, show, showDetails }) {
                 <div
                   className="option"
                   onClick={() => {
-                    show("America");
+                    show("Americas");
                   }}
                 >
-                  America
+                  Americas
                 </div>
                 <div
                   className="option"
@@ -74,7 +74,7 @@ function SearchBar({ dropDown, show, showDetails }) {
                 <div
                   className="option"
                   onClick={() => {
-                    show("Asia");
+                    show("Europe");
                   }}
                 >
                   Europe
