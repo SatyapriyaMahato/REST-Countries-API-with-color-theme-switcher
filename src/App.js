@@ -7,9 +7,12 @@ import CountryData from "./data.json";
 
 
 function App() {
+  // Declare the state and state updater
   const [selectedCountry, setSelectedCountry] = useState(CountryData[0]);
   const [selectedCategory, setSelectedCategory] = useState('Filter by Region');
-  const [filteredItems, setFilteredItems] = useState(CountryData); // Declare the state and state updater
+  const [filteredItems, setFilteredItems] = useState(CountryData);
+  const [searchQuery, setSearchQuery] = useState('');
+
   const categories = [...new Set(CountryData.map(item => item.region))];
 
   let themeState = true;
@@ -38,6 +41,22 @@ function App() {
       : CountryData.filter(item => item.region === a);
     setFilteredItems(updatedFilteredItems);
   }
+
+  // Handle search input change
+  const handleSearchChange = (event) => {
+    const newSearchQuery = event.target.value;
+    setSearchQuery(newSearchQuery);
+    filterCountries(selectedCategory, newSearchQuery);
+  };
+
+  // Filter countries based on selected category and search query
+  const filterCountries = (category, query) => {
+    const updatedFilteredItems = category === "Filter by Region"
+      ? CountryData.filter(item => item.name.toLowerCase().includes(query.trim().toLowerCase()))
+      : CountryData.filter(item => (item.region === category || category === "Filter by Region") && item.name.toLowerCase().includes(query.toLowerCase()));
+
+    setFilteredItems(updatedFilteredItems);
+  };
 
   const dropDown = () => {
     const dd = document.querySelector('.dropdown');
@@ -95,9 +114,21 @@ function App() {
   return (
     <>
       <Header darkMode={darkMode} />
-      <SearchBar dropDown={dropDown} show={show} showDetails={showDetails} />
-      <CountryCardsContainer deafultContries={filteredItems} showDetails={showDetails} />
-      <CountryDetails selectedCountry={selectedCountry} showBorderCountryDetails={showBorderCountryDetails} />
+
+      <SearchBar
+        dropDown={dropDown}
+        show={show}
+        showDetails={showDetails}
+        searchQuery={searchQuery}
+        handleSearchChange={handleSearchChange} />
+
+      <CountryCardsContainer
+        deafultContries={filteredItems}
+        showDetails={showDetails} />
+
+      <CountryDetails
+        selectedCountry={selectedCountry}
+        showBorderCountryDetails={showBorderCountryDetails} />
     </>
 
   );

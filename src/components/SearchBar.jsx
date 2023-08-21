@@ -5,7 +5,13 @@ import {
   faArrowLeftLong,
 } from "@fortawesome/free-solid-svg-icons";
 
-function SearchBar({ dropDown, show, showDetails }) {
+function SearchBar({
+  dropDown,
+  show,
+  showDetails,
+  searchQuery,
+  handleSearchChange,
+}) {
   return (
     <>
       <div className="search-bar container">
@@ -28,7 +34,9 @@ function SearchBar({ dropDown, show, showDetails }) {
             <input
               className="search-field"
               type="text"
-              placeholder="Serach for a country"
+              placeholder="Search for a country"
+              value={searchQuery} // Set value to the search query state
+              onChange={handleSearchChange} // Call handleSearchChange on input change
             />
           </div>
           <div className="right">
