@@ -8,9 +8,9 @@ import {
 function SearchBar({ dropDown, show, showDetails }) {
   return (
     <>
-      <div class="search-bar container">
+      <div className="search-bar container">
         <div
-          class="back-btn active"
+          className="back-btn active"
           onClick={() => {
             showDetails();
           }}
@@ -20,35 +20,35 @@ function SearchBar({ dropDown, show, showDetails }) {
           </span>
           <span>Back</span>
         </div>
-        <div class={`search-bar__wrapper`}>
-          <div class="left">
+        <div className={`search-bar__wrapper`}>
+          <div className="left">
             <div>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </div>
             <input
-              class="search-field"
+              className="search-field"
               type="text"
               placeholder="Serach for a country"
             />
           </div>
-          <div class="right">
+          <div className="right">
             <div
-              class="dropdown"
+              className="dropdown"
               onClick={() => {
                 dropDown();
               }}
             >
               <span
-                class="toggle-menu"
+                className="toggle-menu"
                 onClick={() => {
                   show("Filter by Region");
                 }}
               >
                 Filter by Region
               </span>
-              <div class="options">
+              <div className="options">
                 <div
-                  class="option"
+                  className="option"
                   onClick={() => {
                     show("Africa");
                   }}
@@ -56,7 +56,7 @@ function SearchBar({ dropDown, show, showDetails }) {
                   Africa
                 </div>
                 <div
-                  class="option"
+                  className="option"
                   onClick={() => {
                     show("America");
                   }}
@@ -64,7 +64,7 @@ function SearchBar({ dropDown, show, showDetails }) {
                   America
                 </div>
                 <div
-                  class="option"
+                  className="option"
                   onClick={() => {
                     show("Asia");
                   }}
@@ -72,7 +72,7 @@ function SearchBar({ dropDown, show, showDetails }) {
                   Asia
                 </div>
                 <div
-                  class="option"
+                  className="option"
                   onClick={() => {
                     show("Asia");
                   }}
@@ -80,7 +80,7 @@ function SearchBar({ dropDown, show, showDetails }) {
                   Europe
                 </div>
                 <div
-                  class="option"
+                  className="option"
                   onClick={() => {
                     show("Oceania");
                   }}

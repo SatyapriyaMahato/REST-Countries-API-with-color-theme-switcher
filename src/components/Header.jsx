@@ -6,11 +6,11 @@ function Header({ darkMode }) {
   return (
     <>
       <header>
-        <nav class="container">
+        <nav className="container">
           <div>
             <h1>Where in the Worlds?</h1>
             <span
-              class="dark_mode-btn"
+              className="dark_mode-btn"
               onClick={() => {
                 darkMode();
               }}
@@ -18,7 +18,7 @@ function Header({ darkMode }) {
               <span>
                 <FontAwesomeIcon icon={faMoon} />
               </span>
-              <span class="mode"> Dark Mode</span>
+              <span className="mode"> Dark Mode</span>
             </span>
           </div>
         </nav>

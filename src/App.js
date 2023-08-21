@@ -1,9 +1,15 @@
+import React, { useState } from 'react';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import CountryCardsContainer from './components/CountryCardsContainer';
 import CountryDetails from './components/CountryDetails';
+import CountryData from "./data.json";
+import { counter } from '@fortawesome/fontawesome-svg-core';
+
 
 function App() {
+  const [selectedCountry, setSelectedCountry] = useState(CountryData[0]);
+  // State to store the selected country object
   let themeState = true;
 
   const darkMode = () => {
@@ -32,9 +38,17 @@ function App() {
     dd.classList.toggle('clicked');
   };
 
-  const showDetails = () => {
+  let updatedValue = {};
+
+  const showDetails = (key) => {
     flagCardClick();
+
+    setSelectedCountry(previousState => {
+      return { ...previousState, ...key }
+    });
+
   };
+
   const flagCardClick = () => {
     const searchBarWrapper = document.querySelector(".search-bar__wrapper");
     const backBtn = document.querySelector(".back-btn");
@@ -51,7 +65,8 @@ function App() {
       <Header darkMode={darkMode} />
       <SearchBar dropDown={dropDown} show={show} showDetails={showDetails} />
       <CountryCardsContainer showDetails={showDetails} />
-      <CountryDetails />
+      <CountryDetails selectedCountry={selectedCountry} />
+      {/* Pass the selected country to CountryDetails */}
     </>
 
   );

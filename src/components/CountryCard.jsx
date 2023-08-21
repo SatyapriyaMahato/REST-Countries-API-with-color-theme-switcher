@@ -1,26 +1,29 @@
 import React from "react";
 
-function CountryCard({ showDetails, showContainer }) {
+function CountryCard({ showDetails, country }) {
   return (
     <>
       <div
-        class="country"
+        className="country"
         onClick={() => {
-          showDetails();
+          showDetails(country);
         }}
       >
-        <img src="https://flagcdn.com/w320/al.png" alt="flag" />
+        <img src={country.flags.png} alt="flag" />
 
-        <div class="details">
-          <h2 class="name">Afganistan</h2>
-          <p class="population">
-            <span>Population: </span>40218234
+        <div className="details">
+          <h2 className="name">{country.name}</h2>
+          <p className="population">
+            <span>Population: </span>
+            {country.population}
           </p>
-          <p class="region">
-            <span>Region: </span>Asia
+          <p className="region">
+            <span>Region: </span>
+            {country.region}
           </p>
-          <p class="capital">
-            <span>Capital:</span>Kabul
+          <p className="capital">
+            <span>Capital: </span>
+            {country.capital}
           </p>
         </div>
       </div>

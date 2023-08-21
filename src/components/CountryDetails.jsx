@@ -1,50 +1,87 @@
 import React from "react";
+import countriesData from "../data.json";
 
-function CountryDetails() {
+function CountryDetails({ selectedCountry }) {
   return (
     <>
-      <div class="country-details active container">
-        <div class="left">
-          <img src="https://flagcdn.com/w320/al.png" alt="" width="600" />
+      <div className="country-details active container">
+        <div className="left">
+          <img src={selectedCountry.flags.png} alt="flag" width="600" />
         </div>
-        <div class="right">
-          <h2 class="name">Afganistan</h2>
-          <div class="details">
-            <div class="details-left">
+        <div className="right">
+          <h2 className="name">{selectedCountry.name}</h2>
+          <div className="details">
+            <div className="details-left">
               <p>
-                Native Name:<span class="native-name"> Shqipëria</span>
+                Native Name:{" "}
+                <span className="native-name">
+                  {" "}
+                  {selectedCountry.nativeName}
+                </span>
               </p>
               <p>
-                Population:<span class="population"> 2837743</span>
+                Population:{" "}
+                <span className="population">
+                  {" "}
+                  {selectedCountry.population}
+                </span>
               </p>
               <p>
-                Region:<span class="region"> Kabul</span>
+                Region:{" "}
+                <span className="region"> {selectedCountry.region}</span>
               </p>
               <p>
-                Sub Region:<span class="sub-region"> Kabul</span>
+                Sub Region:{" "}
+                <span className="sub-region"> {selectedCountry.subregion}</span>
               </p>
               <p>
-                Capital:<span class="sapital"> Kabul</span>
+                Capital:{" "}
+                <span className="capital">{selectedCountry.capital}</span>
               </p>
             </div>
-            <div class="details-left">
+            <div className="details-left">
               <p>
-                Top Level Domain:<span class="top-levelDomain"> 40218234</span>
+                Top Level Domain:
+                <span className="top-levelDomain">
+                  {" "}
+                  {selectedCountry.topLevelDomain}
+                </span>
               </p>
               <p>
-                Currencies:<span class="currencies"> Asia</span>
+                Currencies:
+                <span className="currencies">
+                  {" "}
+                  {selectedCountry.currencies[0].name}
+                </span>
               </p>
               <p>
-                Languages:<span class="languages"> Kabul</span>
+                Languages:
+                <span className="languages">
+                  {" "}
+                  {selectedCountry.languages
+                    .map((language) => language.name)
+                    .join(" ")}
+                </span>
               </p>
             </div>
           </div>
-          <div class="border-countries">
-            <div class="left">
-              <p>Border Countrie: </p>
+          <div className="border-countries">
+            <div className="left">
+              <p>Border Countries: </p>
             </div>
-            <div class="right">
-              <button class="border-countries__btn">France</button>
+            <div className="right">
+              {selectedCountry.borders.map((borderCode, index) => {
+                const country = countriesData.find(
+                  (country) => country.alpha3Code === borderCode
+                );
+                const countryName = country ? country.name : "Unknown Country";
+
+                return (
+                  <button key={index} className="border-countries__btn">
+                    {countryName}
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>

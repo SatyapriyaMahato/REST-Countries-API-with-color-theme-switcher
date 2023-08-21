@@ -223,6 +223,7 @@ h1 {
 
 .countries {
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 6em;
 
@@ -230,6 +231,12 @@ h1 {
 
 .country {
   background-color: var(--element);
+  max-width: 26rem;
+}
+
+.country img {
+  width: 26rem;
+  height: 16rem;
 }
 
 .country :hover {
@@ -263,10 +270,10 @@ h1 {
 
 .country-details {
   display: flex;
+  flex-wrap: wrap;
   color: var(--text);
   gap: 12rem;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .country-details p {
@@ -302,6 +309,12 @@ h1 {
 
 .border-countries p {
   font-weight: 600;
+}
+
+.border-countries .right {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .border-countries button {
