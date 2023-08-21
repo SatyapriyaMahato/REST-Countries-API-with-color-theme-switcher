@@ -273,7 +273,6 @@ h1 {
 
 .country-details {
   display: flex;
-  flex-wrap: wrap;
   color: var(--text);
   gap: 12rem;
   align-items: center;
@@ -300,7 +299,6 @@ h1 {
 .country-details .right .details {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 8rem;
 }
 
@@ -350,5 +348,13 @@ h1 {
 
   .country-details .left img {
     width: 100%;
+  }
+
+  .country-details {
+    flex-wrap: wrap;
+  }
+
+  .country-details .right .details {
+    flex-wrap: wrap;
   }
 }
