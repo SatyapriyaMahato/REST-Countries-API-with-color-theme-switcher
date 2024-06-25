@@ -21,10 +21,12 @@ function CountryCard({ showDetails, country }) {
             <span>Region: </span>
             {country.region}
           </p>
-          <p className="capital">
-            <span>Capital: </span>
-            {country.capital}
-          </p>
+          {country.capital && (
+            <p className="capital">
+              <span>Capital: </span>
+              {country.capital}
+            </p>
+          )}
         </div>
       </div>
     </>

@@ -2,6 +2,7 @@ import React from "react";
 import countriesData from "../data.json";
 
 function CountryDetails({ selectedCountry, showBorderCountryDetails }) {
+  console.log(selectedCountry);
   return (
     <>
       <div className="country-details active container">
@@ -34,10 +35,12 @@ function CountryDetails({ selectedCountry, showBorderCountryDetails }) {
                 Sub Region:{" "}
                 <span className="sub-region"> {selectedCountry.subregion}</span>
               </p>
-              <p>
-                Capital:{" "}
-                <span className="capital">{selectedCountry.capital}</span>
-              </p>
+              {selectedCountry.capital && (
+                <p>
+                  Capital:{" "}
+                  <span className="capital">{selectedCountry.capital}</span>
+                </p>
+              )}
             </div>
             <div className="details-left">
               <p>
@@ -47,13 +50,15 @@ function CountryDetails({ selectedCountry, showBorderCountryDetails }) {
                   {selectedCountry.topLevelDomain}
                 </span>
               </p>
-              <p>
-                Currencies:
-                <span className="currencies">
-                  {" "}
-                  {selectedCountry.currencies[0].name}
-                </span>
-              </p>
+              {selectedCountry.currencies && (
+                <p>
+                  Currencies:
+                  <span className="currencies">
+                    {" "}
+                    {selectedCountry.currencies[0].name}
+                  </span>
+                </p>
+              )}
               <p>
                 Languages:
                 <span className="languages">
@@ -65,32 +70,36 @@ function CountryDetails({ selectedCountry, showBorderCountryDetails }) {
               </p>
             </div>
           </div>
-          <div className="border-countries">
-            <div className="left">
-              <p>Border Countries: </p>
-            </div>
-            <div className="right">
-              {selectedCountry.borders.map((borderCode, index) => {
-                const country = countriesData.find(
-                  (country) => country.alpha3Code === borderCode
-                );
+          {selectedCountry.borders && (
+            <div className="border-countries">
+              <div className="left">
+                <p>Border Countries: </p>
+              </div>
+              <div className="right">
+                {selectedCountry.borders.map((borderCode, index) => {
+                  const country = countriesData.find(
+                    (country) => country.alpha3Code === borderCode
+                  );
 
-                const countryName = country ? country.name : "Unknown Country";
+                  const countryName = country
+                    ? country.name
+                    : "Unknown Country";
 
-                return (
-                  <button
-                    onClick={() => {
-                      showBorderCountryDetails(countryName);
-                    }}
-                    key={index}
-                    className="border-countries__btn"
-                  >
-                    {countryName}
-                  </button>
-                );
-              })}
+                  return (
+                    <button
+                      onClick={() => {
+                        showBorderCountryDetails(countryName);
+                      }}
+                      key={index}
+                      className="border-countries__btn"
+                    >
+                      {countryName}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </>

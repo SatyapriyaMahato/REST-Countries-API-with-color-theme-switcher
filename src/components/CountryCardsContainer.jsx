@@ -5,7 +5,6 @@ import CountryData from "../data.json";
 function CountryCardsContainer({ deafultContries, showDetails }) {
   return (
     <>
-      {console.log(deafultContries)}
       <div className="countries container">
         {deafultContries.map((country) => {
           return (

@@ -8,7 +8,7 @@ import {
 function SearchBar({
   dropDown,
   show,
-  showDetails,
+  flagCardClick,
   searchQuery,
   handleSearchChange,
 }) {
@@ -18,7 +18,7 @@ function SearchBar({
         <div
           className="back-btn active"
           onClick={() => {
-            showDetails();
+            flagCardClick();
           }}
         >
           <span>

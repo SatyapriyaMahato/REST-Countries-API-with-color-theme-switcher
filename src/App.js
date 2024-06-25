@@ -67,9 +67,8 @@ function App() {
   const showDetails = (key) => {
     flagCardClick();
     setSelectedCountry(previousState => {
-      return { ...previousState, ...key }
+      return { previousState, ...key }
     });
-
   };
 
   const showBorderCountryDetails = (borderCountry) => {
@@ -118,7 +117,7 @@ function App() {
       <SearchBar
         dropDown={dropDown}
         show={show}
-        showDetails={showDetails}
+        flagCardClick={flagCardClick}
         searchQuery={searchQuery}
         handleSearchChange={handleSearchChange} />
 
