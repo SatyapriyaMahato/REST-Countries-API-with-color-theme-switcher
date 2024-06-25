@@ -15,7 +15,7 @@ function CountryCard({ showDetails, country }) {
           <h2 className="name">{country.name}</h2>
           <p className="population">
             <span>Population: </span>
-            {country.population}
+            {country.population.toLocaleString("en-IN")}
           </p>
           <p className="region">
             <span>Region: </span>

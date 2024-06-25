@@ -2,7 +2,6 @@ import React from "react";
 import countriesData from "../data.json";
 
 function CountryDetails({ selectedCountry, showBorderCountryDetails }) {
-  console.log(selectedCountry);
   return (
     <>
       <div className="country-details active container">
@@ -24,7 +23,7 @@ function CountryDetails({ selectedCountry, showBorderCountryDetails }) {
                 Population:{" "}
                 <span className="population">
                   {" "}
-                  {selectedCountry.population}
+                  {selectedCountry.population.toLocaleString("en-IN")}
                 </span>
               </p>
               <p>
