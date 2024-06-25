@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/country-dictionary/static/css/main.983a1373.css",
-    "main.js": "/country-dictionary/static/js/main.046e0d20.js",
+    "main.js": "/country-dictionary/static/js/main.aa3223fb.js",
     "index.html": "/country-dictionary/index.html",
     "main.983a1373.css.map": "/country-dictionary/static/css/main.983a1373.css.map",
-    "main.046e0d20.js.map": "/country-dictionary/static/js/main.046e0d20.js.map"
+    "main.aa3223fb.js.map": "/country-dictionary/static/js/main.aa3223fb.js.map"
   },
   "entrypoints": [
     "static/css/main.983a1373.css",
-    "static/js/main.046e0d20.js"
+    "static/js/main.aa3223fb.js"
   ]
 }
